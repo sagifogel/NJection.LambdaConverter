@@ -1,9 +1,0 @@
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\bin\Debug\NJection.LambdaConverter.dll
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\bin\Debug\NJection.LambdaConverter.pdb
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\bin\Debug\ICSharpCode.Decompiler.dll
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\bin\Debug\ICSharpCode.NRefactory.CSharp.dll
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\bin\Debug\ICSharpCode.NRefactory.dll
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\bin\Debug\Mono.Cecil.dll
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\obj\Debug\NJection.LambdaConverter.dll
-C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter\obj\Debug\NJection.LambdaConverter.pdb
