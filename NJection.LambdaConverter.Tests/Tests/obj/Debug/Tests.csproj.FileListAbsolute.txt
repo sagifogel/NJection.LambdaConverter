@@ -1,0 +1,11 @@
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\NJection.LambdaConverter.Tests.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\NJection.LambdaConverter.Tests.pdb
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\NJection.LambdaConverter.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\ICSharpCode.NRefactory.CSharp.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\Mono.Cecil.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\ICSharpCode.Decompiler.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\bin\Debug\NJection.LambdaConverter.pdb
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\obj\Debug\NJection.LambdaConverter.Tests.dll
+C:\Users\Home\Desktop\LambdaConverter\NJection.LambdaConverter.Tests\Tests\obj\Debug\NJection.LambdaConverter.Tests.pdb
