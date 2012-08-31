@@ -1,7 +1,7 @@
 NJection.LambdaConverter is open-source .NET assembly for converting delegates to expression trees.
 Website: http://www.njection.net/
 
-Copyright 2019-2012 Sagi Fogel
+Copyright 2009-2012 Sagi Fogel
 License: NJection.LambdaConverter is distributed under the MIT License.
 
 Included open-source libraries:
