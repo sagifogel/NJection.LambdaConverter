@@ -37,7 +37,7 @@ namespace NJection.LambdaConverter.DynamicProxies
             string typeName = string.Format("{0}.{1}", DynamicAssemblyBuilder.AssemblyName, type.FullName);
             TypeBuilder typeBuilder = DynamicModuleBuilder.Instance.DefineType(typeName, _typeAttributes, type);
 
-            Interlocked.CompareExchange(ref _current, typeBuilder, null);
+            Interlocked.Exchange<TypeBuilder>(ref _current, typeBuilder);
 
             if (type.IsGenericType) {
                 MakeGenericType(type, typeBuilder);
