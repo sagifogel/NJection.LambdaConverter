@@ -3,6 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using ICSharpCode.Decompiler.Ast.Transforms;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 using Ast_Expression = NJection.LambdaConverter.Expressions.AstExpression;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 

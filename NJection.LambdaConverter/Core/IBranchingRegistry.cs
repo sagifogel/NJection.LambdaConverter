@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace NJection.LambdaConverter
+namespace NJection.Core
 {
     public interface IBranchingRegistry
     {

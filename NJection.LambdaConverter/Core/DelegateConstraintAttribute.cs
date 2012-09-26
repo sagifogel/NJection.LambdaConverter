@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NJection.LambdaConverter
+namespace NJection.Core
 {
     [AttributeUsage(AttributeTargets.GenericParameter)]
     public class DelegateConstraintAttribute : Attribute

@@ -1,5 +1,6 @@
 ﻿using System;
 using NJection.LambdaConverter.Expressions;
+using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 
 namespace NJection.LambdaConverter.Visitors

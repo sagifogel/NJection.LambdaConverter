@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using NJection.Core;
 using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 
 namespace NJection.LambdaConverter.Expressions

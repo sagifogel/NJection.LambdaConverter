@@ -4,6 +4,7 @@ using NJection.LambdaConverter.Visitors;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 using NJection.LambdaConverter.DynamicProxies;
 using System.Collections.Generic;
+using NJection.Scope;
 
 namespace NJection.LambdaConverter.Expressions
 {

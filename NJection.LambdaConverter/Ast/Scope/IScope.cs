@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using NJection.Core;
 
-namespace NJection.LambdaConverter
+namespace NJection.Scope
 {
     public interface IScope : IScopeChild
     {

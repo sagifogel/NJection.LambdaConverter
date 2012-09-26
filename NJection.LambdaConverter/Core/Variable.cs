@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System;
 
-namespace NJection.LambdaConverter
+namespace NJection.Core
 {
     public class Variable
     {   

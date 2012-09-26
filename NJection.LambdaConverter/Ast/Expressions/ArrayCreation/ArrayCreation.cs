@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using NJection.LambdaConverter.ArrayIndexes;
 using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 
 namespace NJection.LambdaConverter.Expressions
@@ -19,6 +20,7 @@ namespace NJection.LambdaConverter.Expressions
 
         protected internal ArrayCreation(NRefactory.ArrayCreateExpression arrayCreateExpression, IScope scope, INRefcatoryExpressionVisitor visitor)
             : base(scope, visitor) {
+            
             _arrayCreateExpression = arrayCreateExpression;
             _isJaggeedArray = IsJaggedArray();
             _isVector = IsVector();

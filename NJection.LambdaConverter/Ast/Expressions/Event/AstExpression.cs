@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 
 namespace NJection.LambdaConverter.Expressions
 {

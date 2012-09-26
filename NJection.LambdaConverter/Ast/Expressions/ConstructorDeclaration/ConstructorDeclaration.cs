@@ -6,6 +6,8 @@ using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 using NJection.LambdaConverter.DynamicProxies;
+using NJection.Scope;
+using NJection.Core;
 
 namespace NJection.LambdaConverter.Expressions
 {

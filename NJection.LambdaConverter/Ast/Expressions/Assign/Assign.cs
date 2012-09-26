@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Mono.Cecil.Cil;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 
 namespace NJection.LambdaConverter.Expressions
@@ -14,7 +15,7 @@ namespace NJection.LambdaConverter.Expressions
 
         protected internal Assign(NRefactory.AssignmentExpression assignmentExpression, IScope scope, INRefcatoryExpressionVisitor visitor)
             : base(scope, visitor) {
-            
+
             AstExpression left = null;
 
             _assignment = assignmentExpression;

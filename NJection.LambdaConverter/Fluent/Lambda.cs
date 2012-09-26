@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using NJection.Core;
 
 namespace NJection.LambdaConverter.Fluent
 {

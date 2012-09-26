@@ -1,5 +1,6 @@
 ﻿using Mono.Cecil.Cil;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 
 namespace NJection.LambdaConverter.Expressions
 {

@@ -1,8 +1,8 @@
-﻿namespace NJection.LambdaConverter
+﻿namespace NJection.Scope
 {
     public interface IScopeChild
     {
         IScope ParentScope { get; }
-        IMethodScope RootScope { get; }
+        IRootScope RootScope { get; }
     }
 }

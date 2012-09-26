@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using NJection.Core;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 
 namespace NJection.LambdaConverter.Expressions
 {
@@ -74,16 +76,6 @@ namespace NJection.LambdaConverter.Expressions
 
             return FindInParentScopes(name, ParentScope, Visitor);
         }
-
-        //public void ChangeToAnonymousType(string name, Type type) {
-        //    Variable variable = FindVariable(name);
-
-        //    if (variable != null) {
-        //        var parameter = Expression.Parameter(type, variable.Expression.Name);
-        //        VariablesStore.Remove(name);
-        //        VariablesStore.Add(name, new Variable(parameter, true));
-        //    }
-        //}
 
         public virtual Type ResolveType(string genericType) {
             return null;

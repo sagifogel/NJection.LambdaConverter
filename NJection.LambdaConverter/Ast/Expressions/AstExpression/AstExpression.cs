@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 
 namespace NJection.LambdaConverter.Expressions
 {
@@ -19,7 +20,7 @@ namespace NJection.LambdaConverter.Expressions
 
         public IScope ParentScope { get; protected set; }
 
-        public IMethodScope RootScope { get; protected set; }
+        public IRootScope RootScope { get; protected set; }
 
         public override ExpressionType NodeType {
             get { return ExpressionType.Extension; }

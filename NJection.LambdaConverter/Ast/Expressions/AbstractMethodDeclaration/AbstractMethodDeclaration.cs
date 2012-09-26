@@ -8,10 +8,12 @@ using NJection.LambdaConverter.TypeResolvers;
 using NJection.LambdaConverter.Visitors;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 using NJection.LambdaConverter.DynamicProxies;
+using NJection.Scope;
+using NJection.Core;
 
 namespace NJection.LambdaConverter.Expressions
 {
-    public abstract class AbstractMethodDeclaration<TDeclaration> : Method, IMethodScope
+    public abstract class AbstractMethodDeclaration<TDeclaration> : Method, IRootScope
         where TDeclaration : NRefactory.AstNode
     {
         protected Type TypeOfThis = null;

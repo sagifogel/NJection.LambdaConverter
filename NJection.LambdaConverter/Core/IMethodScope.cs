@@ -1,8 +1,8 @@
 ﻿using NJection.LambdaConverter.Expressions;
 
-namespace NJection.LambdaConverter
+namespace NJection.Core
 {
-    public interface IMethodScope : IInstructionsIndexer, IBranchingRegistry
+    public interface IMethodScope : IBranchingRegistry
     {
         IContext Context { get; }
         IBranchingRegistry BranchingRegistry { get; }

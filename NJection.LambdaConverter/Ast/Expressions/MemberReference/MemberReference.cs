@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using Mono.Cecil;
 using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
 
 namespace NJection.LambdaConverter.Expressions

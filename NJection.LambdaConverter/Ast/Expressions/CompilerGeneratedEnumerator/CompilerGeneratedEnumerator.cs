@@ -6,6 +6,7 @@ using Mono.Cecil;
 using Mono.Cecil.Cil;
 using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
+using NJection.Scope;
 
 namespace NJection.LambdaConverter.Expressions
 {
