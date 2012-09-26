@@ -313,6 +313,6 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Exec Command="&quot;$(MSBuildProjectPath)..\Binaries\ICSahrp.MethodCompiler.DelegateConstraintCreator.exe&quot; &quot;$(MSBuildProjectPath)@(MainAssembly)&quot; &quot;$(MSBuildProjectPath)$(AssemblyOriginatorKeyFile)&quot;" />
+    <Exec Command="&quot;$(MSBuildProjectPath)..\Binaries\NJection.DelegateConstraintCreator.exe&quot; &quot;$(MSBuildProjectPath)@(MainAssembly)&quot; &quot;$(MSBuildProjectPath)$(AssemblyOriginatorKeyFile)&quot;" />
   </Target>
 </Project>
