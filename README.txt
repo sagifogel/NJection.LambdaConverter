@@ -12,76 +12,95 @@ Included open-source libraries:
 
 Samples:
 
-	Converting a static delegate
+Converting a static delegate
 
-	public class Program
-	{
-			private static void Main(string[] args) {
-				var lambda = Lambda.TransformMethodTo<Func<string, int>>()
-									.From(() => Parse)
-									.ToLambda();            
-			}
-
-			public static int Parse(string value) {
-				return int.Parse(value);
-			}
+public class Program
+{
+	private static void Main(string[] args) {
+	    var lambda = Lambda.TransformMethodTo<Func<string, int>>()
+				.From(() => Parse)
+				.ToLambda();            
 	}
 
-	-------------------------------------------------------------------------
-	Converting an instance delegate
+	public static int Parse(string value) {
+	    return int.Parse(value);
+	}
+}
 
-	public class Sample
-	{
-			public int Parse(string value) {
-				return int.Parse(value);
-			}
+-------------------------------------------------------------------------
+Converting an instance delegate
+
+public class Sample
+{
+	public int Parse(string value) {
+	    return int.Parse(value);
+	}
+}
+
+public class Program
+{
+	private static void Main(string[] args) {
+	    var sample = new Sample();
+	    var lambda = Lambda.TransformMethodTo<Func<string, int>>()
+				.From(() => sample.Parse)
+				.WithContextOf<Sample>(sample)
+				.ToLambda();              
+	}
+}
+
+-------------------------------------------------------------------------
+Converting a constructor
+
+public class Sample
+{
+	public int Value { get; set; }
+
+	public Sample(int i) {
+	    Value = i;
+	}
+}
+
+public class Program
+{
+	private static void Main(string[] args) {
+	    var types = new Type[] { typeof(int) };
+	    var ctor = typeof(Sample).GetConstructor(types);
+	    var resolver = new ConstructorResolver(ctor);
+	    var lambda = Lambda.ResolveConstructorTo<Func<int, Sample>>(resolver)
+							.ToLambda();            
+	}
+}
+
+-------------------------------------------------------------------------
+Converting a generic delegate
+
+public class Program
+{
+	private static void Main(string[] args) {
+	     var lambda = Lambda.TransformMethodTo<Func<string, DateTime>>()
+				 .From(() => Parse<DateTime>)
+				 .ToLambda();           
 	}
 
-	public class Program
-	{
-			private static void Main(string[] args) {
-				var sample = new Sample();
-				var lambda = Lambda.TransformMethodTo<Func<string, int>>()
-									.From(() => sample.Parse)
-									.WithContextOf<Sample>(sample)
-									.ToLambda();              
-			}
+	private static T Parse<T>(string value) where T : struct {
+	    return (T)Enum.Parse(typeof(T), value);
+	}
+}
+
+-------------------------------------------------------------------------
+Converting a custom delegate
+
+public class Program
+{	
+	private delegate int CustomDelegate(string value);
+
+	private static void Main(string[] args) {
+		var lambda = Lambda.TransformMethodTo<CustomDelegate>()
+                                 .From(() => Parse)
+                                 .ToLambda();           
 	}
 
-	-------------------------------------------------------------------------
-	Converting a constructor
-
-	public class Sample
-	{
-			public int Value { get; set; }
-
-			public Sample(int i) {
-				Value = i;
-			}
+	private static int Parse(string value) {
+		return int.Parse(value);
 	}
-
-	public class Program
-	{
-			private static void Main(string[] args) {
-				var ctor = typeof(Sample).GetConstructor(new Type[] { typeof(int) });
-				var resolver = new ConstructorResolver(ctor);
-				var lambda2 = Lambda.ResolveConstructorTo<Func<int, Sample>>(resolver)
-									.ToLambda();            
-			}
-	}
-
-	-------------------------------------------------------------------------
-	Converting a generic delegate
-
-	public class Program
-	{
-			private static void Main(string[] args) {
-				var lambda = Lambda.TransformMethodTo<Func<string, DateTime>>()
-									.From(() => Parse<DateTime>)
-									.ToLambda();           
-			}
-
-			static T Parse<T>(string value) where T : struct {
-				return (T)Enum.Parse(typeof(T), value);
-			}
-	}
+}
