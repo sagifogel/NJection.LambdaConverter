@@ -143,8 +143,8 @@ namespace NJection.LambdaConverter.Extensions
             string assemblyName = string.Empty;
 
             assemblyName = typeReference.Scope is ModuleDefinition ?
-                                (typeReference.Scope as ModuleDefinition).Assembly.Name.Name :
-                                assemblyName = (typeReference.Scope as AssemblyNameReference).Name;
+                                (typeReference.Scope as ModuleDefinition).Assembly.Name.FullName :
+                                (typeReference.Scope as AssemblyNameReference).FullName;
 
             if (!AssemblyResolver.Instance.TryResolve(assemblyName, out assembly)) {
                 throw new ArgumentException();
