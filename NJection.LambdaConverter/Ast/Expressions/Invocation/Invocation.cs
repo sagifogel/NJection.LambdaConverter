@@ -269,7 +269,9 @@ namespace NJection.LambdaConverter.Expressions
         }
 
         private bool ArgumentShouldBeBoxed(Type first, Type second) {
-            return !first.IsValueType && second.IsValueType;
+            return !first.IsValueType && second.IsValueType ||
+                   (first.IsGenericType && first.GetGenericTypeDefinition() == typeof(Nullable<>) &&
+                    Nullable.GetUnderlyingType(first) == second);
         }
 
         private bool TypesAreEqual(Type first, Type second) {
