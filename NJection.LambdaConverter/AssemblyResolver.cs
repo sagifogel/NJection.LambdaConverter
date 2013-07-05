@@ -19,7 +19,7 @@ namespace NJection.LambdaConverter
         private AssemblyResolver() {
             _assemblies = AppDomain.CurrentDomain
                                    .GetAssemblies()
-                                   .ToThreadSafeDictionary(a => a.GetName().Name);
+                                   .ToThreadSafeDictionary(a => a.GetName().FullName);
         }
 
         public static AssemblyResolver Instance {
@@ -37,7 +37,7 @@ namespace NJection.LambdaConverter
         public AssemblyDefinition Resolve(Assembly assembly) {
             AssemblyDefinition assemblyDefinition;
 
-            TryResolveDefinition(assembly.GetName().Name, out assemblyDefinition);
+            TryResolveDefinition(assembly.GetName().FullName, out assemblyDefinition);
             return assemblyDefinition;
         }
 
