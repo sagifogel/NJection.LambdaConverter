@@ -18,7 +18,7 @@ namespace NJection.LambdaConverter.TypeResolvers
 
                 return types.Select((type, i) => {
                     var parameter = methodParameters[i];
-                    var moudle = type.Assembly.GetName().Name;
+                    var moudle = type.Assembly.GetName().FullName;
                     var assembly = assemblyResolver.Resolve(moudle);
                     return new {
                         Key = parameter.FullName,
