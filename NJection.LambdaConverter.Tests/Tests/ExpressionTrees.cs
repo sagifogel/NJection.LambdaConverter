@@ -64,8 +64,8 @@ namespace NJection.LambdaConverter.Tests
         [TestMethod]
         [Fixed("https://github.com/sagifogel/NJection.LambdaConverter/issues/1")]
         public void LambdaExpresionLCreaton_ThatCreatesAnArrayAndQueriesItsLengthProperty_ReturnsTheCorrectValueOTheArrayLength() {
-            Func<int> delegat = () => new int[0].Length;
-            var result = ExecuteLambda(delegat);
+            Func<int> @delegate = () => new int[0].Length;
+            var result = ExecuteLambda(@delegate);
 
             Assert.AreEqual(result(), 0);
         }
