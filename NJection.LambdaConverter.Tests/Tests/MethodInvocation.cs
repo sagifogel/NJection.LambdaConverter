@@ -6,6 +6,8 @@ namespace NJection.LambdaConverter.Tests
     [TestClass]
     public partial class MethodInvocation : BaseTest
     {
+        private const int _defaultValue = 9;
+
         public enum Month
         {
             Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
@@ -83,6 +85,23 @@ namespace NJection.LambdaConverter.Tests
             string month = func(5, Month.Jan.ToString(), Month.Feb.ToString(), Month.Mar.ToString(), Month.Apr.ToString(), Month.May.ToString(), Month.Jun.ToString());
 
             Assert.AreEqual(month, Month.Jun.ToString());
+        }
+
+        [TestMethod]
+        public void MethodCallInvocation_WithInnerMethodCallToNullableWithDefualtValueParameter_ReturnsTheDefaultValue() {
+            Func<int> @delegate = NestedMethodCallToAMethodWithANullableWithDefaultValueParameter;
+            var func = ExecuteLambda<Func<int>>(@delegate);
+            int value = func();
+
+            Assert.AreEqual(value, _defaultValue);
+        }
+
+        public static int NestedMethodCallToAMethodWithANullableWithDefaultValueParameter() {
+            return NullableWithDefualtValue();
+        }
+
+        public static int NullableWithDefualtValue(Nullable<int> arg = _defaultValue) {
+            return arg.Value;
         }
 
         public void TryParseInvocation(string value, out Month result)

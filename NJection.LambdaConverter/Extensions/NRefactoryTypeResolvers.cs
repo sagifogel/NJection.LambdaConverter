@@ -96,16 +96,21 @@ namespace NJection.LambdaConverter.Extensions
         }
 
         internal static Type GetActualType(this ComposedType composedType) {
-            Type baseType = GetActualType(composedType.BaseType);
+            Type type = GetActualType(composedType.BaseType);
 
-            composedType.ArraySpecifiers
-                        .Reverse()
-                        .ForEach(s => {
-                            int dimensions = s.Dimensions;
-                            baseType = dimensions > 1 ? baseType.MakeArrayType(dimensions) : baseType.MakeArrayType();
-                        });
+            if (!composedType.HasNullableSpecifier) {
+                composedType.ArraySpecifiers
+                            .Reverse()
+                            .ForEach(s => {
+                                int dimensions = s.Dimensions;
+                                type = dimensions > 1 ? type.MakeArrayType(dimensions) : type.MakeArrayType();
+                            });
+            }
+            else {
+                type = typeof(Nullable<>).MakeGenericType(type);
+            }
 
-            return baseType;
+            return type;
         }
 
         internal static Type GetArrayType(this ArrayCreateExpression arrayCreateExpression) {
