@@ -104,6 +104,7 @@
     <Compile Include="EventExpression.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="ExpressionTrees.cs" />
+    <Compile Include="FixedAttribute.cs" />
     <Compile Include="GotoExpression.cs" />
     <Compile Include="Linq.cs" />
     <Compile Include="ListExpressions\ListAccessExpression.cs" />

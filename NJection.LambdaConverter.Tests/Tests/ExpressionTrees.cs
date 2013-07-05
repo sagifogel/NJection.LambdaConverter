@@ -60,6 +60,16 @@ namespace NJection.LambdaConverter.Tests
             Assert.IsTrue(@bool);
         }
 
+        
+        [TestMethod]
+        [Fixed("https://github.com/sagifogel/NJection.LambdaConverter/issues/1")]
+        public void LambdaExpresionLCreaton_ThatCreatesAnArrayAndQueriesItsLengthProperty_ReturnsTheCorrectValueOTheArrayLength() {
+            Func<int> delegat = () => new int[0].Length;
+            var result = ExecuteLambda(delegat);
+
+            Assert.AreEqual(result(), 0);
+        }
+
         private bool InvokeParseBoolLamabdaExpression(string val)
         {
             Expression<Func<string, bool>> ex = (value) => bool.Parse(value);

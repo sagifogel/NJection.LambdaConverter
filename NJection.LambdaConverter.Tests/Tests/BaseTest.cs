@@ -12,8 +12,6 @@ namespace NJection.LambdaConverter.Tests
         ///Dummy for loading Microsoft.CSharp.dll
         protected Func<CSharpBinderFlags, Type, Type, CallSiteBinder> Convert = Microsoft.CSharp.RuntimeBinder.Binder.Convert;
 
-
-
         public TDelegate ExecuteLambda<TDelegate>(TDelegate func) where TDelegate : class {
             return Lambda.TransformMethodTo<TDelegate>()
                          .From(() => func)
