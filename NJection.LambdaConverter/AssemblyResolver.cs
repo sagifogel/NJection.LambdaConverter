@@ -27,11 +27,11 @@ namespace NJection.LambdaConverter
         }
 
         public AssemblyDefinition Resolve(AssemblyNameReference name) {
-            return Resolve(name.Name);
+            return Resolve(name.FullName);
         }
 
         public AssemblyDefinition Resolve(AssemblyNameReference name, ReaderParameters parameters) {
-            return Resolve(name.Name);
+            return Resolve(name.FullName);
         }
 
         public AssemblyDefinition Resolve(Assembly assembly) {
