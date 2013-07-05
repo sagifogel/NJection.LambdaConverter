@@ -7,12 +7,14 @@ using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
 using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
+using ICSharpCode.Decompiler.Ast;
 
 namespace NJection.LambdaConverter.Expressions
 {
     public class MemberReference : AstExpression
     {
         private bool _isStatic = false;
+        private AstExpression _astExpression = null;
         private Mono.Cecil.MemberReference _memberReference = null;
         private NRefactory.MemberReferenceExpression _memberReferenceExpression = null;
 
@@ -144,7 +146,8 @@ namespace NJection.LambdaConverter.Expressions
         private void BuildExpression() {
             var target = _memberReferenceExpression.Target;
             string memberName = _memberReferenceExpression.MemberName;
-            var astExpression = target.AcceptVisitor(Visitor, ParentScope);
+
+            _astExpression = _astExpression ?? target.AcceptVisitor(Visitor, ParentScope);
 
             if (memberName.Equals("GetMethodFromHandle")) {
                 BuildMethodHandleExpression();
@@ -157,7 +160,7 @@ namespace NJection.LambdaConverter.Expressions
             }
 
             if (!_isStatic) {
-                Expression = astExpression;
+                Expression = _astExpression;
             }
         }
 
@@ -231,6 +234,21 @@ namespace NJection.LambdaConverter.Expressions
                 _isStatic = methodInfo.IsStatic;
                 InternalType = methodInfo.ReturnType;
                 return;
+            }
+
+            var typeInformation = _memberReferenceExpression.Annotation<TypeInformation>();
+
+            if (typeInformation != null) {
+                MemberInfo[] members = null;
+
+                _astExpression = _memberReferenceExpression.Target.AcceptVisitor(Visitor, ParentScope);
+                members = _astExpression.Type.GetMember(_memberReferenceExpression.MemberName);
+
+                if (members.Length > 0) {
+                    Member = members[0];
+                }
+
+                InternalType = typeInformation.InferredType.GetActualType();
             }
         }
     }
