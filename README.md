@@ -1,35 +1,27 @@
-NJection.LambdaConverter is an open-source .NET assembly for converting delegates resolved from methods/constructors to expression trees.
-Website: http://www.njection.net/
+##NJection.LambdaConverter 
 
-Copyright 2009-2012 Sagi Fogel
-License: NJection.LambdaConverter is distributed under the MIT License.
+`NJection.LambdaConverter` is an open-source .NET assembly for converting delegates<br/> resolved from methods/constructors to expression trees.<br/>
 
-Included open-source libraries:
-	Mono.Cecil
-	ICSharpCode.Decompiler
-	ICSharpCode.NRefactory
-	ICSharpCode.NRefactory.CSharp
+###Converting a static delegate
 
-Samples:
-
-Converting a static delegate
-
+```c#
 public class Program
 {
 	private static void Main(string[] args) {
 	    var lambda = Lambda.TransformMethodTo<Func<string, int>>()
-				.From(() => Parse)
-				.ToLambda();            
+				           .From(() => Parse)
+				           .ToLambda();            
 	}
 
 	public static int Parse(string value) {
 	    return int.Parse(value);
 	}
 }
+```
 
--------------------------------------------------------------------------
-Converting an instance delegate
+### Converting an instance delegate
 
+```c#
 public class Sample
 {
 	public int Parse(string value) {
@@ -42,15 +34,16 @@ public class Program
 	private static void Main(string[] args) {
 	    var sample = new Sample();
 	    var lambda = Lambda.TransformMethodTo<Func<string, int>>()
-				.From(() => sample.Parse)
-				.WithContextOf<Sample>(sample)
-				.ToLambda();              
+				           .From(() => sample.Parse)
+				           .WithContextOf<Sample>(sample)
+				           .ToLambda();              
 	}
 }
+```
 
--------------------------------------------------------------------------
-Converting a constructor
+### Converting a constructor
 
+```c#
 public class Sample
 {
 	public int Value { get; set; }
@@ -67,40 +60,54 @@ public class Program
 	    var ctor = typeof(Sample).GetConstructor(types);
 	    var resolver = new ConstructorResolver(ctor);
 	    var lambda = Lambda.ResolveConstructorTo<Func<int, Sample>>(resolver)
-							.ToLambda();            
+						   .ToLambda();            
 	}
 }
+```
 
--------------------------------------------------------------------------
-Converting a generic delegate
+### Converting a generic delegate
 
+```c#
 public class Program
 {
 	private static void Main(string[] args) {
 	     var lambda = Lambda.TransformMethodTo<Func<string, DateTime>>()
-				 .From(() => Parse<DateTime>)
-				 .ToLambda();           
+				            .From(() => Parse<DateTime>)
+				            .ToLambda();           
 	}
 
 	private static T Parse<T>(string value) where T : struct {
 	    return (T)Enum.Parse(typeof(T), value);
 	}
 }
+```
 
--------------------------------------------------------------------------
-Converting a custom delegate
+### Converting a custom delegate
 
+```c#
 public class Program
 {	
 	private delegate int CustomDelegate(string value);
 
 	private static void Main(string[] args) {
 		var lambda = Lambda.TransformMethodTo<CustomDelegate>()
-                                 .From(() => Parse)
-                                 .ToLambda();           
+                           .From(() => Parse)
+                           .ToLambda();           
 	}
 
 	private static int Parse(string value) {
 		return int.Parse(value);
 	}
 }
+```
+
+### Included open-source libraries:
+* Mono.Cecil
+* ICSharpCode.Decompiler
+* ICSharpCode.NRefactory
+* ICSharpCode.NRefactory.CSharp
+
+
+##License
+
+`NJection.LambdaConverter` is distributed under the MIT License.<br/>
