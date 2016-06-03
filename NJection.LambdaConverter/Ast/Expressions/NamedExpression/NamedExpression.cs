@@ -1,7 +1,12 @@
 ﻿using System.Linq.Expressions;
+using System.Reflection;
+using Mono.Cecil;
+using System;
+using NJection.LambdaConverter.Extensions;
 using NJection.LambdaConverter.Visitors;
 using NJection.Scope;
 using NRefactory = ICSharpCode.NRefactory.CSharp;
+using ICSharpCode.Decompiler.Ast;
 
 namespace NJection.LambdaConverter.Expressions
 {
@@ -11,10 +16,13 @@ namespace NJection.LambdaConverter.Expressions
 
         protected internal NamedExpression(NRefactory.NamedExpression namedExpression, IScope scope, INRefcatoryExpressionVisitor visitor)
             : base(scope, visitor) {
+            Name = namedExpression.Identifier;
             _namedExpression = namedExpression;
             Expression = _namedExpression.Expression.AcceptVisitor(Visitor, ParentScope);
             InternalType = Expression.Type;
         }
+
+        public string Name { get; private set; }
 
         public Expression Expression { get; set; }
 

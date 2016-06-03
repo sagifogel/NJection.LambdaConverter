@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -217,6 +218,17 @@ namespace NJection.LambdaConverter.Extensions
                 case TypeCode.Single:
                 case TypeCode.Double:
                     return true;
+            }
+
+            return false;
+        }
+
+        public static bool IsGenericListOrDictionary(this Type type) {
+            if (type.IsGenericType) {
+                var genericDefinition = type.GetGenericTypeDefinition();
+
+                return genericDefinition == typeof(List<>) ||
+                       genericDefinition == typeof(Dictionary<,>);
             }
 
             return false;

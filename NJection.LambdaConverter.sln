@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJection.LambdaConverter", "NJection.LambdaConverter\NJection.LambdaConverter.csproj", "{C819EE27-47F1-47F6-86E2-F2917525EF79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "NJection.LambdaConverter.Tests\Tests\Tests.csproj", "{A1ACA519-9C2B-4816-8AEB-4A87A34FC157}"
