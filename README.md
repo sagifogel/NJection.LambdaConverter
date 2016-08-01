@@ -2,6 +2,12 @@
 
 `NJection.LambdaConverter` is an open-source .NET assembly for converting delegates<br/> resolved from methods/constructors to expression trees.<br/>
 
+###Installing
+
+```
+Install-Package NJection.LambdaConverter
+```
+
 ###Converting a static delegate
 
 ```c#
