@@ -4,3 +4,4 @@ obj
 *.user
 TestResults
 *Resharper*
+.vs/NJection.LambdaConverter/v15/sqlite3/storage.ide

@@ -11,9 +11,9 @@ namespace NJection.LambdaConverter
     {
         private static readonly Lazy<AssemblyResolver> _instance = null;
         private readonly ConcurrentDictionary<string, Assembly> _assemblies = null;
-      private readonly ConcurrentDictionary<string, AssemblyDefinition> _assembliesDef = null;
+        private readonly ConcurrentDictionary<string, AssemblyDefinition> _assembliesDef = null;
 
-    static AssemblyResolver() {
+        static AssemblyResolver() {
             _instance = new Lazy<AssemblyResolver>(() => new AssemblyResolver(), LazyThreadSafetyMode.ExecutionAndPublication);
         }
 
@@ -21,7 +21,7 @@ namespace NJection.LambdaConverter
             _assemblies = AppDomain.CurrentDomain
                                    .GetAssemblies()
                                    .ToThreadSafeDictionary(a => a.GetName().FullName);
-          _assembliesDef = new ConcurrentDictionary<string, AssemblyDefinition>();
+            _assembliesDef = new ConcurrentDictionary<string, AssemblyDefinition>();
         }
 
         public static AssemblyResolver Instance {
@@ -53,17 +53,15 @@ namespace NJection.LambdaConverter
         public bool TryResolveDefinition(string assemblyName, out AssemblyDefinition assemblyDefinition) {
             Assembly assembly;
 
-          if (!_assembliesDef.TryGetValue(assemblyName, out assemblyDefinition))
-          {
-            if (TryResolve(assemblyName, out assembly))
-            {
-              string fullyQualifiedName = assembly.ManifestModule.FullyQualifiedName;
-              assemblyDefinition = AssemblyDefinition.ReadAssembly(fullyQualifiedName);
-              _assembliesDef.TryAdd(assemblyName, assemblyDefinition);
+            if (!_assembliesDef.TryGetValue(assemblyName, out assemblyDefinition)) {
+                if (TryResolve(assemblyName, out assembly)) {
+                    string fullyQualifiedName = assembly.ManifestModule.FullyQualifiedName;
+                    assemblyDefinition = AssemblyDefinition.ReadAssembly(fullyQualifiedName);
+                    _assembliesDef.TryAdd(assemblyName, assemblyDefinition);
+                }
             }
-          }
 
-          return assemblyDefinition != null;
+            return assemblyDefinition != null;
         }
 
         public bool TryResolve(string assemblyName, out Assembly assembly) {
