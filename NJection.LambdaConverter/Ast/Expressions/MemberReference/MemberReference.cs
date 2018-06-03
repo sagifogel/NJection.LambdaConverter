@@ -211,7 +211,7 @@ namespace NJection.LambdaConverter.Expressions
                 methodInfo = methodReference.GetActualMethod<MethodInfo>();
                 _isStatic = methodInfo.IsStatic;
 
-                if (propertyInfo.CanWrite && propertyInfo.GetSetMethod().Equals(methodInfo)) {
+                if (propertyInfo.CanWrite && propertyInfo.GetSetMethod(true).Equals(methodInfo)) {
                     Member = propertyInfo;
                     InternalType = propertyInfo.PropertyType;
                 }
