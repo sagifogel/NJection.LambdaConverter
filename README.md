@@ -15,8 +15,8 @@ public class Program
 {
 	private static void Main(string[] args) {
 	    var lambda = Lambda.TransformMethodTo<Func<string, int>>()
-				           .From(() => Parse)
-				           .ToLambda();            
+                               .From(() => Parse)
+			       .ToLambda();            
 	}
 
 	public static int Parse(string value) {
@@ -40,9 +40,9 @@ public class Program
 	private static void Main(string[] args) {
 	    var sample = new Sample();
 	    var lambda = Lambda.TransformMethodTo<Func<string, int>>()
-				           .From(() => sample.Parse)
-				           .WithContextOf<Sample>(sample)
-				           .ToLambda();              
+			       .From(() => sample.Parse)
+			       .WithContextOf<Sample>(sample)
+			       .ToLambda();              
 	}
 }
 ```
@@ -66,7 +66,7 @@ public class Program
 	    var ctor = typeof(Sample).GetConstructor(types);
 	    var resolver = new ConstructorResolver(ctor);
 	    var lambda = Lambda.ResolveConstructorTo<Func<int, Sample>>(resolver)
-						   .ToLambda();            
+			       .ToLambda();            
 	}
 }
 ```
@@ -78,8 +78,8 @@ public class Program
 {
 	private static void Main(string[] args) {
 	     var lambda = Lambda.TransformMethodTo<Func<string, DateTime>>()
-				            .From(() => Parse<DateTime>)
-				            .ToLambda();           
+				.From(() => Parse<DateTime>)
+				.ToLambda();           
 	}
 
 	private static T Parse<T>(string value) where T : struct {
@@ -97,8 +97,8 @@ public class Program
 
 	private static void Main(string[] args) {
 		var lambda = Lambda.TransformMethodTo<CustomDelegate>()
-                           .From(() => Parse)
-                           .ToLambda();           
+                                   .From(() => Parse)
+                                   .ToLambda();           
 	}
 
 	private static int Parse(string value) {
@@ -108,11 +108,12 @@ public class Program
 ```
 
 ### Included open-source libraries:
-* Mono.Cecil
-* ICSharpCode.Decompiler
-* ICSharpCode.NRefactory
-* ICSharpCode.NRefactory.CSharp
-
+```
+Mono.Cecil
+ICSharpCode.Decompiler
+ICSharpCode.NRefactory
+ICSharpCode.NRefactory.CSharp
+```
 
 ## License
 
